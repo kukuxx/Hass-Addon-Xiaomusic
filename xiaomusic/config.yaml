@@ -1,0 +1,30 @@
+name: "Xiaomusic"
+version: "v0.3.75"
+slug: "xiaomusic"
+panel_icon: "mdi:music-box"
+description: "Xiaomusic for Home Assistant Addon"
+url: https://github.com/kukuxx/Hass-Addon-Xiaomusic
+init: false
+arch:
+  - amd64
+  - armv7
+  - aarch64
+startup: "services"
+boot: "auto"
+apparmor: false
+ingress: true
+ingress_port: 8090
+host_dbus: true
+map:
+  - config:rw
+  - media:rw
+  - ssl:ro
+webui: "http://[HOST]:[PORT:8090]/"
+ports:
+  8090/tcp: 58090
+ports_description:
+  8090/tcp: Server port
+environment:
+  XIAOMUSIC_PUBLIC_PORT: "58090"
+devices:
+  - /dev/fuse
